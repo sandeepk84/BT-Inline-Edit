@@ -35,6 +35,14 @@
         $('#cancelButton').removeClass('d-none');
         $input.removeClass('d-none').insertAfter($label);
 
+	$input.on('focusout', function(event) {
+	   var newValue = $input.val();
+	   $label.text(newValue);
+	   $input.remove();
+	   $label.removeClass('d-none');
+	   $('#editButton').removeClass('d-none');
+	   $('#cancelButton').addClass('d-none');
+	});
         $input.on('keyup', function(event) {
           if (event.keyCode === 13) {
             var newValue = $input.val();
